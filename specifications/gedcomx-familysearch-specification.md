@@ -58,8 +58,9 @@ and the [GEDCOM X Atom Extensions](https://github.com/FamilySearch/gedcomx-rs/bl
   * [2.16 The "User" Data Type](#user)
   * [2.17 The "Error" Data Type](#error)
   * [2.18 The "Feature" Data Type](#feature)
-  * [2.19 The "FamilySearchPlatform" XML Data Type](#fsp-xml)
-  * [2.20 The "FamilySearchPlatform" JSON Data Type](#fsp-json)
+  * [2.19 The "FeedbackInfo" Data Type](#feedback-info)
+  * [2.20 The "FamilySearchPlatform" XML Data Type](#fsp-xml)
+  * [2.21 The "FamilySearchPlatform" JSON Data Type](#fsp-json)
 
 
 <a name="id-and-version"/>
@@ -1149,9 +1150,61 @@ description | The feature description. | description | string
 enabled | Whether the feature is enabled. | enabled | boolean
 activationDate | The feature activation date. | activationDate | number (milliseconds since epoch)
 
+<a name="feedback-info"/>
+
+## 2.19 The "FeedbackInfo" Data Type
+
+The `FeedbackInfo` data type defines a representation of feedback that can be submitted to
+the FamilySearch places database.
+
+Instances of `FeedbackInfo` can be reasonably expected as extension elements to the [`PlaceDescription` Data Type](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#place-description).
+
+### identifier
+
+The identifier for the `FeedbackInfo` data type is:
+
+`http://familysearch.org/v1/FeedbackInfo`
+
+### properties
+
+name  | description | data type | constraints
+------|-------------|-----------|------------
+resolution | Resolution of the feedback. | [`URI`](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#uri) | OPTIONAL.
+status | Status of the feedback. | [`URI`](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#uri) | OPTIONAL.
+place | Reference to the place that was created as a result of this feedback, if applicable. | [`URI`](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#uri) | OPTIONAL. If provided, MUST resolve to an instance of [`PlaceDescription`](https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#place-description).
+details | Any notes or details provided as part of the feedback. | string | OPTIONAL.
+
+
+### 2.19.1 The "ArtifactMetadata" XML Type and Element
+
+The `fs:FeedbackInfo` XML type is used to (de)serialize the `http://familysearch.org/v1/FeedbackInfo` data type.
+The `fs:feedbackInfo` XML element is used to provide instances of the `fs:FeedbackInfo` XML type as extension elements.
+
+#### properties
+
+name | description | XML property | XML type
+-----|-------------|--------------|---------
+resolution | Resolution of the feedback. | resolution (attribute) | [anyURI](https://github.com/FamilySearch/gedcomx/blob/master/specifications/xml-format-specification.md#uri)
+status | Status of the feedback. | status (attribute) | [anyURI](https://github.com/FamilySearch/gedcomx/blob/master/specifications/xml-format-specification.md#uri)
+place | Reference to the place that was created as a result of this feedback, if applicable. | fs:place | [gx:ResourceReference](https://github.com/FamilySearch/gedcomx/blob/master/specifications/xml-format-specification.md#resource-reference)
+details | Any notes or details provided as part of the feedback. | fs:details | xsd:string
+
+### 2.19.2 The "ArtifactMetadata" JSON Type
+
+The `ArtifactMetadata` JSON type is used to (de)serialize the `http://familysearch.org/v1/ArtifactMetadata` data type.
+
+#### properties
+
+name | description | JSON member | JSON object type
+-----|-------------|--------------|---------
+resolution | Resolution of the feedback. | resolution | string
+status | Status of the feedback. | status | string
+place | Reference to the place that was created as a result of this feedback, if applicable. | place | [ResourceReference](https://github.com/FamilySearch/gedcomx/blob/master/specifications/json-format-specification.md#resource-reference)
+details | Any notes or details provided as part of the feedback. | details | string
+
 <a name="fsp-xml"/>
 
-## 2.19 The "FamilySearchPlatform" XML Data Type
+## 2.20 The "FamilySearchPlatform" XML Data Type
 
 The `gx:FamilySearchPlatform` XML type is used as a container for a set of FamilySearch data.
 
@@ -1172,7 +1225,7 @@ features | The list of features contained in the data set. | fs:feature | [fs:Fe
 
 <a name="fsp-json"/>
 
-## 2.20 The "FamilySearchPlatform" JSON Data Type
+## 2.21 The "FamilySearchPlatform" JSON Data Type
 
 The `FamilySearchPlatform` JSON type is used as a container for a set of FamilySearch data.
 
