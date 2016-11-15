@@ -1234,3 +1234,55 @@ childAndParentsRelationships | The list of child-and-parents relationships conta
 discussions | The list of discussions contained in the data set. | discussions | array of [Discussion](#discussion) | OPTIONAL.
 users | The list of users contained in the data set. | users | array of [User](#user) | OPTIONAL.
 features | The list of features contained in the data set. | features | array of [Feature](#feature) | OPTIONAL.
+
+<a name="error"/>
+
+## 2.22 The "Error" Data Type
+
+The `Error` data type defines a representation of an error in the FamilySearch system.
+
+Instances of `Error` can be reasonably expected as extension elements to the [`FamilySearchPlatform` XML Data Type](#fsp-xml) and the [`FamilySearchPlatform` JSON Data Type](#fsp-json).
+
+### identifier
+
+The identifier for the `Error` data type is:
+
+`http://familysearch.org/v1/Error`
+
+### properties
+
+name  | description | data type | constraints
+------|-------------|-----------|------------
+code | An error code. | integer | OPTIONAL.
+label | A short human-readable label for the error. | string | OPTIONAL.
+message | A short message providing additional context for the error. | string | OPTIONAL.
+stacktrace | A full stack trace for the error. | string | OPTIONAL.
+
+
+### 2.22.1 The "Error" XML Type and Element
+
+The `fs:Error` XML type is used to (de)serialize the `http://familysearch.org/v1/Error` data type.
+The `fs:Error` XML element is used to provide instances of the `fs:Error` XML type as extension elements.
+
+#### properties
+
+name | description | XML property | XML type
+-----|-------------|--------------|---------
+code | An error code. | fs:code | xsd:integer
+label | A short human-readable label for the error. | fs:label | xsd:string
+message | A short message providing additional context for the error. | fs:message | xsd:string
+stacktrace | A full stack trace for the error. | fs:stacktrace | xsd:string
+
+### 2.22.2 The "Error" JSON Type
+
+The `Error` JSON type is used to (de)serialize the `http://familysearch.org/v1/Error` data type.
+
+#### properties
+
+name | description | JSON member | JSON object type
+-----|-------------|--------------|---------
+code | An error code. | code | number
+label | A short human-readable label for the error. | label | string
+message | A short message providing additional context for the error. | message | string
+stacktrace | A full stack trace for the error. | stacktrace | string
+
