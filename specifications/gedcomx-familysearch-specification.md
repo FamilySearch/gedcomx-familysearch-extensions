@@ -1175,7 +1175,7 @@ place | Reference to the place that was created as a result of this feedback, if
 details | Any notes or details provided as part of the feedback. | string | OPTIONAL.
 
 
-### 2.19.1 The "ArtifactMetadata" XML Type and Element
+### 2.19.1 The "FeedbackInfo" XML Type and Element
 
 The `fs:FeedbackInfo` XML type is used to (de)serialize the `http://familysearch.org/v1/FeedbackInfo` data type.
 The `fs:feedbackInfo` XML element is used to provide instances of the `fs:FeedbackInfo` XML type as extension elements.
@@ -1189,18 +1189,9 @@ status | Status of the feedback. | status (attribute) | [anyURI](https://github.
 place | Reference to the place that was created as a result of this feedback, if applicable. | fs:place | [gx:ResourceReference](https://github.com/FamilySearch/gedcomx/blob/master/specifications/xml-format-specification.md#resource-reference)
 details | Any notes or details provided as part of the feedback. | fs:details | xsd:string
 
-### 2.19.2 The "ArtifactMetadata" JSON Type
+### 2.19.2 The "FeedbackInfo" JSON Type
 
 The `ArtifactMetadata` JSON type is used to (de)serialize the `http://familysearch.org/v1/ArtifactMetadata` data type.
-
-#### properties
-
-name | description | JSON member | JSON object type
------|-------------|--------------|---------
-resolution | Resolution of the feedback. | resolution | string
-status | Status of the feedback. | status | string
-place | Reference to the place that was created as a result of this feedback, if applicable. | place | [ResourceReference](https://github.com/FamilySearch/gedcomx/blob/master/specifications/json-format-specification.md#resource-reference)
-details | Any notes or details provided as part of the feedback. | details | string
 
 <a name="fsp-xml"/>
 
