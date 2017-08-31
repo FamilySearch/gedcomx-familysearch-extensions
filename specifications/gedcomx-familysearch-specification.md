@@ -216,6 +216,7 @@ The following artifact qualifiers are defined by FamilySearch Extensions:
 name | value
 -----|-------
 `http://familysearch.org/v1/Document`| The artifact is a document.
+`http://familysearch.org/v1/Obituary`| The artifact is a obituary.
 `http://familysearch.org/v1/Photo`| The artifact is a photo.
 `http://familysearch.org/v1/Story`| The artifact is a story.
 
